@@ -25,13 +25,13 @@
         paused = false;
         setInterval(function(s){
           if(!paused) {
-            scrollBy(0,s||1)
+            scrollBy(0,1)
           }
         },10)
       }
         window.addEventListener('scroll', function(e) {
           scroll = window.scrollY;
-          if (!paused && (scroll - pastScroll) != 3) {
+          if (!paused && (scroll - pastScroll) != 1) {
             setTimeout(function() {
               paused = false;
             },2000)
