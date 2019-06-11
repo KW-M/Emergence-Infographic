@@ -39,11 +39,19 @@
         }, 8);
       }, 3000);
       setInterval(function (s) {
-        if (window.scrollY < 200)
+        imageHeight = document.getElementById("img2").offsetTop;
+        if (window.scrollY < imageHeight) {
           window.scrollTo({
-            top: document.getElementById("img2").offsetTop + window.scrollY,
+            top: imageHeight + window.scrollY,
             behavior: "auto"
           });
+        }
+        if (window.scrollY > imageHeight * 2) {
+          window.scrollTo({
+            top: window.scrollY - imageHeight,
+            behavior: "auto"
+          });
+        }
       }, 10);
     }
     handleScroll = function (e) {
@@ -59,12 +67,8 @@
   </script>
   <img src="./Info-Graphic-2.png" />
   <img src="./Info-Graphic-2.png" id="img2" />
-  <img src="./Info-Graphic-2.png" />
-  <img src="./Info-Graphic-2.png" />
-  <img src="./Info-Graphic-2.png" />
-  <img src="./Info-Graphic-2.png" />
-  <img src="./Info-Graphic-2.png" />
-  <img src="./Info-Graphic-2.png" onload="setupScroll()" />
+  <img src="./Info-Graphic-2.png" id="img3" onload="setupScroll()" />
+
 </body>
 
 </html>
