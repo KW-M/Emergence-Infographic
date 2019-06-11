@@ -18,24 +18,31 @@
     </style>
     <script>
       paused = true;
-      function setupScroll() {
+      pastScroll = 0;
+      function setupScroll(e) {
+        console.log(e)
+        window.scrollY;
         paused = false;
         setInterval(function(s){
-          if(!paused) scrollBy(0,s||1)
+          if(!paused) {
+            scrollBy(0,s||1)
+          }
         },10)
       }
         window.addEventListener('scroll', function(e) {
-          if (!paused) {
+          scroll = window.scrollY;
+          if (!paused && (scroll - pastScroll) != 3) {
             setTimeout(function() {
               paused = false;
             },2000)
             paused = true;
           } 
+          pastScroll = scroll;
         })
       
     </script>
-    <img src="./Info-Graphic-2.png" onload="setupScroll()"/>
     <img src="./Info-Graphic-2.png" />
+    <img src="./Info-Graphic-2.png" onload="setupScroll()" />
     <img src="./Info-Graphic-2.png" />
     <img src="./Info-Graphic-2.png" />
     <img src="./Info-Graphic-2.png" />
