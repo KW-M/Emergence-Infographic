@@ -1,53 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Emergence</title>
-  </head>
-  <body>
-    <style>
-      img {
-        width: 100vw;
-        display: -webkit-box;
-      }
-      body {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-    <script>
-      paused = true;
-      pastScroll = 0;
-      function setupScroll(e) {
-        console.log(e)
-        window.scrollY;
-        paused = false;
-        setInterval(function(s){
-          if(!paused) {
-            scrollBy(0,1)
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Emergence</title>
+</head>
+
+<body>
+  <style>
+    img {
+      width: 100vw;
+      display: -webkit-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script>
+    paused = true;
+    pastScroll = 0;
+    function setupScroll(e) {
+      console.log(document.getElementById("img2").offsetTop, window.scrollY);
+      // window.scrollTo(
+      //   0,
+      //   document.getElementById("img2").offsetTop + window.scrollY
+      // );
+      paused = false;
+      setTimeout(function () {
+        setInterval(function (s) {
+          if (!paused) {
+            // window.removeEventListener("scroll", handleScroll);
+            window.scrollBy(0, 1 || s);
+            // window.addEventListener("scroll", handleScroll);
           }
-        },10)
+        }, 8);
+      }, 3000);
+      setInterval(function (s) {
+        if (window.scrollY < 200)
+          window.scrollTo({
+            top: document.getElementById("img2").offsetTop + window.scrollY,
+            behavior: "auto"
+          });
+      }, 10);
+    }
+    handleScroll = function (e) {
+      scroll = window.scrollY;
+      if (!paused) {
+        setTimeout(function () {
+          paused = false;
+        }, 2000);
+        paused = true;
       }
-        window.addEventListener('scroll', function(e) {
-          scroll = window.scrollY;
-          if (!paused && (scroll - pastScroll) != 1) {
-            setTimeout(function() {
-              paused = false;
-            },2000)
-            paused = true;
-          } 
-          pastScroll = scroll;
-        })
-      
-    </script>
-    <img src="./Info-Graphic-2.png" />
-    <img src="./Info-Graphic-2.png" onload="setupScroll()" />
-    <img src="./Info-Graphic-2.png" />
-    <img src="./Info-Graphic-2.png" />
-    <img src="./Info-Graphic-2.png" />
-    <img src="./Info-Graphic-2.png" />
-    <img src="./Info-Graphic-2.png" />
-    <img src="./Info-Graphic-2.png" />
-  </body>
+      pastScroll = scroll;
+    };
+  </script>
+  <img src="./Info-Graphic-2.png" />
+  <img src="./Info-Graphic-2.png" id="img2" />
+  <img src="./Info-Graphic-2.png" />
+  <img src="./Info-Graphic-2.png" />
+  <img src="./Info-Graphic-2.png" />
+  <img src="./Info-Graphic-2.png" />
+  <img src="./Info-Graphic-2.png" />
+  <img src="./Info-Graphic-2.png" onload="setupScroll()" />
+</body>
+
 </html>
