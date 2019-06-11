@@ -16,7 +16,24 @@
         padding: 0;
       }
     </style>
-    <img src="./Info-Graphic-2.png" />
+    <script>
+      paused = true;
+      setupScroll() {
+        setInterval(function(s){
+          if(!paused) scrollBy(0,s||1)
+        },10)
+      }
+        window.addEventListener('scroll', function(e) {
+          if (!paused) {
+            setTimeout(function() {
+              paused = false;
+            },2000)
+            paused = true;
+          } 
+        }
+      
+    </script>
+    <img src="./Info-Graphic-2.png" onLoad="setupScroll"/>
     <img src="./Info-Graphic-2.png" />
     <img src="./Info-Graphic-2.png" />
     <img src="./Info-Graphic-2.png" />
