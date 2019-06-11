@@ -18,7 +18,7 @@
     </style>
     <script>
       paused = true;
-      setupScroll() {
+      function setupScroll() {
         setInterval(function(s){
           if(!paused) scrollBy(0,s||1)
         },10)
